@@ -24,5 +24,6 @@ public class ItemEntity {
     @ManyToOne
     @JoinColumn(name="supplierId",referencedColumnName = "supplierId")
     private SupplierEntity supplierEntity;
+    private boolean isDisabled = true;
 
 }

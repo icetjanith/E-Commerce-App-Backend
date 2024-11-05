@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.example.dto.Item;
 import org.example.service.ItemService;
@@ -33,6 +34,37 @@ public class ItemController {
             return ResponseEntity.ok(itemService.getAllItems());
         } catch (Exception e) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping("/update")
+    ResponseEntity<List<Item>> updateItem(@RequestBody Item item){
+        try{
+            return new ResponseEntity<List<Item>>(itemService.updateItem(item),HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/delete/{itemCode}")
+    ResponseEntity<String> deleteItemById(@PathVariable String itemCode){
+        try {
+            itemService.deleteById(itemCode);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (EntityNotFoundException e) {
+            return new ResponseEntity<>("Item not found", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/item_code/{itemCode}")
+    ResponseEntity<Item> searchById(@PathVariable String itemCode){
+        try{
+            Item item = itemService.searchById(itemCode);
+            return new ResponseEntity<>(item,HttpStatus.FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
