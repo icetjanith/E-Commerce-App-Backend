@@ -2,7 +2,6 @@ package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.dto.Order;
-import org.example.dto.OrderDetails;
 import org.example.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

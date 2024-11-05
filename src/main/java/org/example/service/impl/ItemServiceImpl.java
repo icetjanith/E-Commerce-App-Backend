@@ -1,7 +1,5 @@
 package org.example.service.impl;
 
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.example.dto.Item;
 import org.example.entity.ItemEntity;
@@ -13,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @AllArgsConstructor
 @Service
