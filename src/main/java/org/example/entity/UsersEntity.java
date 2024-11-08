@@ -21,4 +21,6 @@ public class UsersEntity {
     private String userType;
     private String phoneNumber;
     private String city;
+    private String otpNumber;
+    private boolean isDisabled;
 }

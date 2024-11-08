@@ -46,7 +46,7 @@ public class ItemServiceImpl implements ItemService {
         ArrayList<Item> itemArrayList=new ArrayList<>();
         try{
             itemRepository.save(modelMapper.map(item,ItemEntity.class));
-            List<ItemEntity> itemEntities = itemRepository.findAll();
+            List<ItemEntity> itemEntities = itemRepository.findByIsDisabledFalse();
             itemEntities.forEach(itemEntity -> {
                 itemArrayList.add(modelMapper.map(itemEntity, Item.class));
             });
