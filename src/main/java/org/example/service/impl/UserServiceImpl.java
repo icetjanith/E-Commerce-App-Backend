@@ -26,8 +26,14 @@ public class UserServiceImpl implements UserService {
     private final UsersRepository usersRepository;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
+    private final String adminId="12345";
     @Override
     public Users saveUser(Users user) {
+        if(user.getUserType().equals("admin")){
+            if(!user.getAdminId().equals(adminId)){
+                throw new IllegalArgumentException("Not valid admin Id");
+            }
+        }
         UsersEntity usersEntity = usersRepository.save(modelMapper.map(user, UsersEntity.class));
 
         String subject = "Registration Successful";

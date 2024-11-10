@@ -78,5 +78,19 @@ public class ItemServiceImpl implements ItemService {
         }
     }
 
+    @Override
+    public List<Item> searchByCategory(String category) {
+        ArrayList<Item> itemArrayList=new ArrayList<>();
+        try{
+            List<ItemEntity> itemEntities = itemRepository.findByItemCategoryAndIsDisabledFalse(category);
+            itemEntities.forEach(itemEntity -> {
+                itemArrayList.add(modelMapper.map(itemEntity,Item.class));
+            });
+            return itemArrayList;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }

@@ -68,4 +68,14 @@ public class ItemController {
         }
     }
 
+    @GetMapping("/category/{category}")
+    ResponseEntity<List<Item>> searchByCategory(@PathVariable String category){
+        try{
+            List<Item> itemList = itemService.searchByCategory(category);
+            return new ResponseEntity<>(itemList,HttpStatus.FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

@@ -1,7 +1,6 @@
 package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.example.dto.Otp;
 import org.example.dto.SignInRequest;
 import org.example.dto.Users;
@@ -17,8 +16,14 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
     @PostMapping("/save")
-    public Users saveUser(@RequestBody Users user) {
-        return userService.saveUser(user);
+    public ResponseEntity<Users> saveUser(@RequestBody Users user) {
+        try{
+            Users savedUser = userService.saveUser(user);
+            return new ResponseEntity<Users>(savedUser,HttpStatus.CREATED);
+        }catch (IllegalArgumentException illegalArgumentException){
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
     }
 
     @PostMapping("/sign-in")

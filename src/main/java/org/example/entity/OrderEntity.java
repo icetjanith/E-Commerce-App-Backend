@@ -15,10 +15,9 @@ public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer orderId;
-    @ManyToOne
-    @JoinColumn(name = "customerId",referencedColumnName = "userId")
-    private UsersEntity usersEntity;
-    @OneToMany(mappedBy = "order")
+    private Integer customerId;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetailsEntity> orderDetailsList;
+
 
 }

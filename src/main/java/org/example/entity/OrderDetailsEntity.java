@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor
@@ -15,6 +16,7 @@ public class OrderDetailsEntity {
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "orderId",referencedColumnName = "orderId")
+    @ToString.Exclude
     OrderEntity order;
     @ManyToOne
     @JoinColumn(name = "itemCode",referencedColumnName = "itemCode")

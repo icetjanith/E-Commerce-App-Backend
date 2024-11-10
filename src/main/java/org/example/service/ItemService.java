@@ -16,4 +16,6 @@ public interface ItemService {
     void deleteById(String id);
 
     Item searchById(String itemCode);
+
+    List<Item> searchByCategory(String category);
 }
