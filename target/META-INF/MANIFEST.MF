@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Created-By: Apache Maven 3.9.8
+Built-By: Janith
+Build-Jdk: 22.0.2
+Implementation-Title: Computer-Shop
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: org.example
+Implementation-URL: https://spring.io/projects/spring-boot/Computer-Shop
+Main-Class: com.example.MainClass
+
