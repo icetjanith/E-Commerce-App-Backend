@@ -17,10 +17,10 @@ public class ApplicationConfig {
     ModelMapper getModelMapper(){
         return new ModelMapper();
     }
-    @Bean
-    JavaMailSender getjavaMailSender(){
-        return new JavaMailSenderImpl();
-    }
+//    @Bean
+//    JavaMailSender getjavaMailSender(){
+//        return new JavaMailSenderImpl();
+//    }
     @Bean
     PasswordEncoder getPasswordEncoder() {
         return new PasswordEncoder() {
